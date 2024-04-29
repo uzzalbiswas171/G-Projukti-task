@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gprojukti/CustomWidget/CustomText/custom_text.dart';
+import 'package:gprojukti/View/home_screen.dart';
 
 class SplashScrreen extends StatefulWidget {
   const SplashScrreen({Key? key}) : super(key: key);
@@ -9,6 +10,14 @@ class SplashScrreen extends StatefulWidget {
 }
 
 class _SplashScrreenState extends State<SplashScrreen> {
+  @override
+  void initState() {
+     Future.delayed(Duration(seconds: 2),() {
+       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+     },);
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +31,13 @@ class _SplashScrreenState extends State<SplashScrreen> {
           children: [
             Container(height: 150,width: 150,decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              image: DecorationImage(image: AssetImage("asset/gprojukti.png"),fit: BoxFit.fill),
-              color: Colors.red
-            ),),
+            image: DecorationImage(image: AssetImage("asset/gprojukti.png"),fit: BoxFit.fill),
+      ),),
+             SizedBox(height: 20,),
              Image.asset(
-               "asset/gprojukti.png",
-               height: 25,
-               width: 25,
+               "asset/loading.gif",
+               height: 80,
+               width: 80,
              )
            ],
         ),
