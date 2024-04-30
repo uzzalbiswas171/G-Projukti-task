@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gprojukti/View/home_screen.dart';
+import 'package:gprojukti/Statemanagement/add_to_card_proviser.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:gprojukti/View/splash_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'Statemanagement/ProductProvider/product_provider.dart';
+import 'Statemanagement/product_provider.dart';
 
 
 void main()async {
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ProductProvider>(create: (context) => ProductProvider(),),
+        ChangeNotifierProvider<AddToCartProvider>(create: (context) => AddToCartProvider(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

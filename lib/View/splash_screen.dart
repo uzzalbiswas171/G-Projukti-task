@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gprojukti/CustomWidget/CustomText/custom_text.dart';
-import 'package:gprojukti/View/home_screen.dart';
+
+
+import 'HomeScreen/home_screen.dart';
+ 
 
 class SplashScrreen extends StatefulWidget {
   const SplashScrreen({Key? key}) : super(key: key);
