@@ -45,33 +45,9 @@ class SmallProductGrigview extends StatelessWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
+              print("xxxxxxxxxxxxxxxxxxxxxxx ${productlist[index]}");
               Navigator.push(context, MaterialPageRoute(builder: (context) => DetailsPage(
-                  data:   {
-                    "id": productlist[index]["id"],
-                    "name": productlist[index]["name"],
-                    "slug": productlist[index]["slug"],
-                    "code": productlist[index]["code"],
-                    "stock":productlist[index]["stock"],
-                    "selling_price": productlist[index]["selling_price"],
-                    "discount_price": productlist[index]["discount_price"],
-                    "category_id": productlist[index]["category_id"],
-                    "sub_category_id": productlist[index]["sub_category_id"],
-                    "delivery_charge":productlist[index]["delivery_charge"],
-                    "product_point": productlist[index]["product_point"],
-                    "estimat_time": productlist[index]["estimat_time"],
-                    "description": productlist[index]["description"],
-                    "policy": productlist[index]["policy"],
-                    "image": "${productlist[index]["image"]}",
-                    "url": productlist[index]["url"],
-                    "status": productlist[index]["status"],
-                    "user_id":productlist[index]["user_id"],
-                    "seller_price":productlist[index]["seller_price"],
-                    "flash_sell":productlist[index]["flash_sell"],
-                    "new_arival": productlist[index]["new_arival"],
-                    "color": productlist[index]["color"]??"None,",
-                    "images" : productlist[index]["images"],
-                    "variant": productlist[index]["variant"]??"None"
-                  }, hero: "hero"
+                  data:  productlist[index] , hero: "hero"
               ),));
             },
             child: Card(
