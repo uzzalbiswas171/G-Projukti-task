@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gprojukti/CustomWidget/CustomText/custom_text.dart';
+import 'package:gprojukti/Model/add_to_cart.dart';
 import 'package:provider/provider.dart';
 
 import '../../Statemanagement/add_to_card_proviser.dart';
 import '../../View/Product/single_products_details.dart';
 import '../../constant.dart';
+import '../CustomNetworkImaget/custom_network_image.dart';
 
 class SmallProductGrigview extends StatelessWidget {
    SmallProductGrigview({super.key,
@@ -108,14 +110,36 @@ class SmallProductGrigview extends StatelessWidget {
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(20),
                               ),
-                            child:Image.asset("asset/banar2.jpg",fit: BoxFit.fill,height:img_height))
-                        ,
+                           // child:Image.network("${productlist[index]["images"]}",fit: BoxFit.fill,height:img_height))
+                                child:CustomNetworkImage(
+                              height: img_height,
+                                  image:"${productlist[index]["images"]}",
+                            ))
+                            ,
                             Positioned(
                               top: 5,
                               right: 5,
                               child: GestureDetector(
                                 onTap: () {
-
+                                  addToCart.addProduct(
+                                                    AddToCartModel(
+                                                      id: int.parse("${productlist[index]["id"]}"),
+                                                      productName: "${productlist[index]["name"]}",
+                                                      image: "${productlist[index]["images"]}",
+                                                      mainPrice:  double.parse("${productlist[index]["selling_price"]}"),
+                                                      salePrice: double.parse("${productlist[index]["discount_price"]??0}"),
+                                                      purchaseRate: "${productlist[index]["delivery_charge"]}",
+                                                      cashBackAmount: "${productlist[index]["estimat_time"]}",
+                                                      cashBackPercent: "10%",
+                                                      colorId: "${productlist[index]["color"]}",
+                                                      sizeId: "${productlist[index]["images"]}",
+                                                      quantity: qty,
+                                                      slug: "${productlist[index]["slug"]}",
+                                                      description: "${productlist[index]["description"]}",
+                                                      entimate_time: "${productlist[index]["estimat_time"]}",
+                                                      flash_sell:"${productlist[index]["flash_sell"]}" ,
+                                                    ),
+                                                  );
                                         Flushbar(
                                           backgroundColor:custombuttoncollor ,
                                           flushbarPosition: FlushbarPosition.TOP,
@@ -168,7 +192,7 @@ class SmallProductGrigview extends StatelessWidget {
                             const EdgeInsets.only(left: 4),
                             child: Row(
                               children: [
-                                CustomText(text: "Price :${productlist[index]["discount_price"]}",
+                                CustomText(text: "Price :${productlist[index]["online_discount"]["online_discount_amount"]}",
                                   fontSize:crossAxisCount==3 || mainAxisExtent==180?9 :14, fontWeight: FontWeight.w600,maxLines: 1,),
                                 Text(" ${productlist[index]["selling_price"]}", style: GoogleFonts.poppins(
                                     fontSize:crossAxisCount==3 || mainAxisExtent==180? 8 :13,

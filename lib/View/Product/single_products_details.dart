@@ -3,6 +3,7 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:gprojukti/CustomWidget/CustomNetworkImaget/custom_network_image.dart';
 import 'package:provider/provider.dart';
 
 import '../../CustomWidget/CustomAppbar/custom_individual_appbar.dart';
@@ -28,14 +29,11 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-
+print("dddddddddddddddddddddddddddddddd ===== >${widget.data}");
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     final addToCart = Provider.of<AddToCartProvider>(context, listen: true);
 
-    b=  (widget.data!["color"].split(','));
-    si=  (widget.data!["variant"].split(','));
-    var colorlist = widget.data!["images"];
 
     return Scaffold(
       appBar: PreferredSize(
@@ -58,27 +56,17 @@ class _DetailsPageState extends State<DetailsPage> {
                 height: 350,
                 color: defaultBackgroundColor,
                 width: w,
-                child: InteractiveViewer(
-                  child:imagee==null?
-                  Image.network("$BaseUrl/${widget.data!["image"]}",fit: BoxFit.fill,):
-                  Image.network("$BaseUrl/${imagee}",fit: BoxFit.fill,),
-                ),
+                child: CustomNetworkImage(image: "${widget.data!["images"]}", height: 350),
               ),
             ),
-            Container(
-              color: Colors.red,
-              width: 100,height:350,
-            )
           ],
         ),
       ),
+
     ],
     ),
       )
     );
   }
-  var b;
-  var si;
-  String ? imagee;
   int ? image_index;
 }

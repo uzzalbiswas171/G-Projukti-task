@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../CustomWidget/CustomText/custom_text.dart';
 import '../../constant.dart';
+import '../FavoriteScreen/favorite_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,9 +47,13 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> bottomBarPages = [
 
 
-    Container(),
+    FavoriteScreen(),
     MainHomeScreen(),
-    Container(),
+    Container(
+      child: Center(
+        child: CustomText(text: "Uzzal Biswas\nFlutter Developer\n01889173335\nuzzal.171.cse@gmail.com", fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+    ),
 
 
 
@@ -58,9 +63,6 @@ final _scaffoldkey=GlobalKey<ScaffoldState>();
 int Select_index=0;
   @override
   Widget build(BuildContext context) {
-
-     print("AAAAAAAAAAAATTTTTTTTTT ${GetStorage().read("Api_token")}");
-     print("AAAAAAAAAAAATTTTTTTTTT ${GetStorage().read("Api_token")}");
 
     return WillPopScope(
       onWillPop: () { return Future(() => false); },
@@ -138,10 +140,10 @@ int Select_index=0;
           
           ],
           onTap: (index) {
-            if(index==0 || index==1){
-
-              if(index==0){
-
+            if(index==0 ){
+              _pageController.jumpToPage(0);
+              if(index==2){
+                _pageController.jumpToPage(2);
               }
             }else{
               _pageController.jumpToPage(1);

@@ -16,7 +16,7 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
   @override
   Widget build(BuildContext context) {
     return Image.network(
-      "$BaseUrl/" + widget.image,fit: BoxFit.fill,height: widget.height,
+      widget.image,fit: BoxFit.fill,height: widget.height,
       errorBuilder: (context, widget, _) {
         return Image.network('https://greenmartbd.net/images/default.jpg',fit: BoxFit.fill,);
       },
