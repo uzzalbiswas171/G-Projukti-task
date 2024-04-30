@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class CustomAppbar extends StatefulWidget {
-  const CustomAppbar({super.key });
-
+   CustomAppbar({super.key , this.onTap});
+  final GestureTapCallback? onTap;
   @override
   State<CustomAppbar> createState() => _CustomAppbarState();
 }
@@ -31,14 +31,17 @@ class _CustomAppbarState extends State<CustomAppbar> {
       ),
       child: AppBar(
         backgroundColor: logocolor,
-        leading: Container(
-          margin: EdgeInsets.only(left: 15,bottom: 8,top: 8),
-          height: 10,
-          width: 10,
-         decoration: BoxDecoration(
-           borderRadius: BorderRadius.circular(10),
-           image: DecorationImage(image: AssetImage("asset/gprojukti.png"))
-         ),
+        leading: InkWell(
+          onTap: widget.onTap,
+          child: Container(
+            margin: EdgeInsets.only(left: 15,bottom: 8,top: 8),
+            height: 10,
+            width: 10,
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(10),
+             image: DecorationImage(image: AssetImage("asset/gprojukti.png"))
+           ),
+          ),
         ),
 
         centerTitle: true,

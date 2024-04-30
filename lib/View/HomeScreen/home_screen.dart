@@ -67,11 +67,28 @@ int Select_index=0;
     return WillPopScope(
       onWillPop: () { return Future(() => false); },
       child: Scaffold(
-        appBar: PreferredSize(preferredSize: Size.fromHeight(70), child: CustomAppbar()),
+
+        appBar: PreferredSize(preferredSize: Size.fromHeight(70), child: CustomAppbar(
+          onTap: () {
+            _scaffoldkey.currentState!.openDrawer();
+          },
+        ),
+        ),
         key: _scaffoldkey,
         drawer: Drawer(
           backgroundColor:  Colors.white,
-
+          child: Column(
+            children: [
+              DrawerHeader(child: Container(
+                height: 100,
+                width: 300,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(11),
+                  image: DecorationImage(image: AssetImage("asset/gprojukti.png"),fit: BoxFit.fill)
+                ),
+              ))
+            ],
+          ),
         ),
 
         body: PageView(
@@ -142,9 +159,9 @@ int Select_index=0;
           onTap: (index) {
             if(index==0 ){
               _pageController.jumpToPage(0);
-              if(index==2){
-                _pageController.jumpToPage(2);
-              }
+
+            } else if(index==2){
+              _pageController.jumpToPage(2);
             }else{
               _pageController.jumpToPage(1);
             }
